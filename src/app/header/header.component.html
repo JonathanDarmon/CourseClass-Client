@@ -1,15 +1,16 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
     <span>Course Class</span>
+    <button mat-raised-button color="primary" routerLink="school">School</button>
+    <button mat-raised-button color="primary" routerLink="administration">Administration</button>
     <span class="spacer"></span>
     <span>Jonathan Darmon, Owner</span>
     <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item routerLink="">
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </button>
     </mat-menu>
-  </mat-toolbar-row>
+  </mat-toolbar>
