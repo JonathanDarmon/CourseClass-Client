@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
     <span>Course Class</span>
-    <button mat-raised-button color="primary" routerLink="school">School</button>
-    <button mat-raised-button color="primary" routerLink="administration">Administration</button>
+    <button *ngIf="authService.loggedIn()" mat-raised-button color="primary" routerLink="school">School</button>
+    <button *ngIf="authService.loggedIn()" mat-raised-button color="primary" routerLink="administration">Administration</button>
     <span class="spacer"></span>
-    <span *ngIf="isLoggedIn">Jonathan Darmon, Owner</span>
-    <button *ngIf="isLoggedIn" mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
+    <span *ngIf="authService.loggedIn()">Jonathan Darmon, Owner</span>
+    <button *ngIf="authService.loggedIn()" mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">

@@ -8,12 +8,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   isLoggedIn: boolean;
   loggingOut(): any{
-    localStorage.removeItem('token');
-    this.router.navigate(['']);
+    this.authService.logout();
   }
 
   ngOnInit(): void {
