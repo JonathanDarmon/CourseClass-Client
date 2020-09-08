@@ -3,8 +3,8 @@
     <button mat-raised-button color="primary" routerLink="school">School</button>
     <button mat-raised-button color="primary" routerLink="administration">Administration</button>
     <span class="spacer"></span>
-    <span>Jonathan Darmon, Owner</span>
-    <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
+    <span *ngIf="isLoggedIn">Jonathan Darmon, Owner</span>
+    <button *ngIf="isLoggedIn" mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
