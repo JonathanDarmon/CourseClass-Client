@@ -7,10 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
+  private _loginUrl = 'https://localhost:44303/api/auth';
   constructor(private http: HttpClient) { }
 
-  authenticate(loginForm: object): Observable<object>{
-    console.log('Arrived');
-    return this.http.post<object>('https://localhost:44303/api/auth', loginForm);
+  authenticate(loginForm): any {
+    return this.http.post<any>(this._loginUrl, loginForm);
+  }
+
+  loggedIn(): any {
+    return !!localStorage.getItem('token');
   }
 }

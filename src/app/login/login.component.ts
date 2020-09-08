@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {FormControl, Validators, FormGroup} from '@angular/forms';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,9 @@ import {AuthService} from '../auth.service';
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService){}
+  constructor(
+    private authService: AuthService,
+    private router: Router){}
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -20,8 +23,16 @@ export class LoginComponent {
     password: new FormControl()
   });
 
-  onSubmit(): void{
-    this.authService.authenticate(this.loginForm.value);
+  onSubmit(): any{
+    this.authService.authenticate(this.loginForm.value)
+    .subscribe(
+      res => {
+        console.log(res);
+        localStorage.setItem('token', res.token);
+        this.router.navigate(['school']);
+      },
+      err => console.log(err)
+      );
   }
 
   getErrorMessage(): string {
