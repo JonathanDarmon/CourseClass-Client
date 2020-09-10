@@ -21,10 +21,20 @@ export class AuthService {
 
   logout(): any {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
     this.router.navigate(['']);
   }
 
   getToken(): any {
     return localStorage.getItem('token');
+  }
+
+  getRole(): any {
+    return localStorage.getItem('role');
+  }
+
+  getUsername(): any {
+    return localStorage.getItem('name');
   }
 }
