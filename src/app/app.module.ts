@@ -22,9 +22,19 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
 
-import { AuthService } from './services/auth.service';
-import { AuthGuard } from './Auth/auth.guard';
-import { TokenInterceptorService } from './Auth/token-interceptor.service';
+import { AuthService } from './core/services/auth.service';
+import { AuthGuard } from './core/auth.guard';
+import { TokenInterceptorService } from './core/interceptor/token-interceptor.service';
+import { ShowStudentComponent } from './school/show-student/show-student.component';
+import { ShowCourseComponent } from './school/show-course/show-course.component';
+import { EditCourseComponent } from './school/edit-course/edit-course.component';
+import { EditStudentComponent } from './school/edit-student/edit-student.component';
+import { AddCourseComponent } from './school/add-course/add-course.component';
+import { AddStudentComponent } from './school/add-student/add-student.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { AddAdminComponent } from './administration/add-admin/add-admin.component';
+import { EditAdminComponent } from './administration/edit-admin/edit-admin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +42,15 @@ import { TokenInterceptorService } from './Auth/token-interceptor.service';
     LoginComponent,
     HeaderComponent,
     SchoolComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    ShowStudentComponent,
+    ShowCourseComponent,
+    EditCourseComponent,
+    EditStudentComponent,
+    AddCourseComponent,
+    AddStudentComponent,
+    AddAdminComponent,
+    EditAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +67,9 @@ import { TokenInterceptorService } from './Auth/token-interceptor.service';
     FormsModule,
     MatMenuModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule,
+    NgbModule
   ],
   providers: [AuthService, AuthGuard,
   {

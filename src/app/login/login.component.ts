@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
-import {AuthService} from '../services/auth.service';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router){}
+    private router: Router) { }
+
 
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required, Validators.minLength(4)]);
   token: string;
 
   loginForm = new FormGroup({
@@ -23,17 +25,16 @@ export class LoginComponent {
     password: new FormControl()
   });
 
-  onSubmit(): any{
+  onSubmit(): any {
     this.authService.authenticate(this.loginForm.value)
-    .subscribe(
-      res => {
-        console.log(res);
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('role', res.role);
-        localStorage.setItem('name', res.name);
-        this.router.navigate(['school']);
-      },
-      err => console.log(err)
+      .subscribe(
+        res => {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('role', res.role);
+          localStorage.setItem('name', res.name);
+          this.router.navigate(['school']);
+        },
+        err => console.log(err)
       );
   }
 
@@ -44,4 +45,10 @@ export class LoginComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
+  ngOnInit(): void {
+    const isLogged = this.authService.loggedIn();
+    if (isLogged === true) {
+      this.router.navigate(['school']);
+    }
+  }
 }

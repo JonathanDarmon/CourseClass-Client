@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../services/student.service';
-import { CourseService } from '../services/course.service';
+import { StudentService } from '../core/services/student.service';
+import { CourseService } from '../core/services/course.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -28,11 +28,11 @@ export class SchoolComponent implements OnInit {
     }
 
     addCourse(): any {
-      this.router.navigate(['/school/edit-course']);
+      this.router.navigate(['/school/add-course']);
     }
 
     addStudent(): any {
-      this.router.navigate(['/school/edit-student']);
+      this.router.navigate(['/school/add-student']);
     }
 
     routerStatus(): boolean {

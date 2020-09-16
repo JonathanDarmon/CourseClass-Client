@@ -10,13 +10,13 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Enter your email</mat-label>
-          <input matInput formControlName="email" placeholder="pat@example.com" required>
+          <input matInput formControlName="email" type="email" placeholder="pat@example.com" required>
           <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
           <mat-label>Enter your password</mat-label>
-          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+          <input matInput formControlName="password" type="password" [type]="hide ? 'password' : 'text'">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

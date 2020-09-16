@@ -1,0 +1,31 @@
+<div>
+  <h2>Add Student</h2>
+  <mat-divider></mat-divider>
+  <button mat-raised-button>Save</button>
+  <br>
+  <form [formGroup]="addStudentForm" (ngSubmit)="onStudentCreate()">
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput type="number">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email">
+      </mat-form-field>
+    </p>
+    <p>
+      <input type="file" name="studentImage" (change)="onFileSelected($event)">
+    </p>
+
+    <button type="submit"></button>
+  </form>
+</div>
