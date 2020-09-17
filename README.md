@@ -1,4 +1,4 @@
-# CourseClassClient
+# CourseClassClient - in development
 
 
 ##### [Go To Course Class Server](https://github.com/JonathanDarmon/CourseClass-Server "Server side")
